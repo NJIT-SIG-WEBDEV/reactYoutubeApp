@@ -19,7 +19,7 @@ class SearchBar extends Component {
   render() {
     return(
       <div>
-        <input onChange={ this.onInputChange } />
+        <input onChange={ this.onInputChange } value={this.state.term} />
         Value of input: { this.state.term }
       </div>
     );
@@ -30,7 +30,6 @@ class SearchBar extends Component {
   // should never mutate a state eg. this.state.term = event.target.value;
   // Components re-render upon every state change or new state
   onInputChange(event) {
-    console.log(event.target.value);
     this.setState({term: event.target.value });
   }
 }
