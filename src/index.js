@@ -18,6 +18,7 @@ class App extends Component {
       videos: [],
       selectedVideo: null
     };
+
   }
 
   videoSearch(term) {
@@ -27,13 +28,16 @@ class App extends Component {
         selectedVideo: videos[0]
        });
      });
+
+     console.log(this.state.videos);
    };
 
+// var onSearchTermChange = videoSearch;
 
   render() {
     return(
       <div>
-        <SearchBar />
+        <SearchBar onSearchTermChange={this.videoSearch} />
       </div>
     );
   }

@@ -7,6 +7,7 @@ class SearchBar extends Component {
 
   constructor(props) {
     super(props);
+
     // every class based component has its own state
     this.state = {term: ''};
 
@@ -19,7 +20,7 @@ class SearchBar extends Component {
   render() {
     return(
       <div>
-        <input onChange={ this.onInputChange } value={this.state.term} />
+        <input onChange={(event) => {this.onInputChange(event.target.value)} } value={this.state.term} />
         Value of input: { this.state.term }
       </div>
     );
@@ -29,8 +30,11 @@ class SearchBar extends Component {
   // enters an input.
   // should never mutate a state eg. this.state.term = event.target.value;
   // Components re-render upon every state change or new state
-  onInputChange(event) {
-    this.setState({term: event.target.value });
+  onInputChange(term) {
+    this.setState({term: term });
+
+    // videoSearch function passed from index.js parent component
+    this.props.onSearchTermChange(term);
   }
 }
 
